@@ -1,0 +1,12 @@
+.popup__error {
+  color: #FF0000;
+  font-size: 12px;
+  line-height: 15px;
+  align-self: flex-start;
+  visibility: hidden;
+  margin-bottom: 28px;
+  min-height: 15px;
+}
+.popup__error:first-of-type {
+  margin-bottom: 2px;
+}

@@ -1,0 +1,8 @@
+.element__title-container {
+  height: 79px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0 21px;
+
+}
