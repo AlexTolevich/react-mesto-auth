@@ -9,6 +9,8 @@ import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 import EditProfilePopup     from './EditProfilePopup.js';
 import EditAvatarPopup      from './EditAvatarPopup.js';
 import AddPlacePopup        from './AddPlacePopup.js';
+import Login                from './Login.js';
+import Register             from './Register.js';
 
 
 function App() {
@@ -132,7 +134,8 @@ function App() {
         <CurrentUserContext.Provider value={currentUser}>
             <div className="root">
                 <Header/>
-
+                <Login/>
+                <Register/>
                 <Main
                     onEditAvatar={handleEditAvatarClick}
                     onEditProfile={handleEditProfileClick}
