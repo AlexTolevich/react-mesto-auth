@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function Login () {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     function handleChangeEmail(event) {
         setEmail(event.target.value);
@@ -34,7 +34,7 @@ function Login () {
                     placeholder="Email"
                     minLength="2"
                     // value={name}
-                    // onChange={handleChangeName}
+                    onChange={handleChangeEmail}
                     required
                 />
                 <span id="email-error" className="login__error"/>
@@ -48,7 +48,7 @@ function Login () {
                     minLength="6"
                     maxLength="200"
                     // value={description}
-                    // onChange={handleChangeDescription}
+                    onChange={handleChangePassword}
                     required
                 />
                 <span id="password-error" className="login__error"/>

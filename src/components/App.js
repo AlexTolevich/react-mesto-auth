@@ -11,12 +11,14 @@ import EditAvatarPopup      from './EditAvatarPopup.js';
 import AddPlacePopup        from './AddPlacePopup.js';
 import Login                from './Login.js';
 import Register             from './Register.js';
+import InfoTooltip          from './InfoTooltip.js';
 
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
     const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
     const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
+    const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(true);
     const [selectedCard, setSelectedCard] = React.useState(null);
     const [currentUser, setCurrentUser] = React.useState({});
     const [cards, setCards] = React.useState([]);
@@ -127,6 +129,7 @@ function App() {
         setIsAddPlacePopupOpen(false);
         setIsEditAvatarPopupOpen(false);
         setIsEditProfilePopupOpen(false);
+        setIsInfoTooltipOpened(false)
         setSelectedCard(null);
     }
 
@@ -183,6 +186,16 @@ function App() {
                     onCloseOverlayClick={closeOverlayClick}
                     buttonTitle="Да"
                 />
+
+                <InfoTooltip
+                    name={""}
+                    title={"Вы успешно зарегистрировались!"}
+                    isOpen={isInfoTooltipOpened}
+                    onClose={closeAllPopups}
+                    onCloseOverlayClick={closeOverlayClick}
+                    image={''}
+                />
+
             </div>
         </CurrentUserContext.Provider>
     );
