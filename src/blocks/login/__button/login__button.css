@@ -4,4 +4,10 @@
     font-size: 18px;
     line-height: 22px;
     font-weight: normal;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.login__button:hover{
+    opacity: 0.85;
 }
