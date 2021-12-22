@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Login () {
+function Login ({onLogin}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -17,14 +17,14 @@ function Login () {
         if(!email || !password) {
             return;
         }
-        // TO DO
+        onLogin(email, password)
     }
 
     return (
         <>
         <section className="login">
             <h2 className="login__title">Вход</h2>
-            <form className="login__form">
+            <form className="login__form" onSubmit={handleSubmit}>
                 <input
                     aria-label="Ваша почта"
                     type="Email"
@@ -33,7 +33,7 @@ function Login () {
                     className="login__input"
                     placeholder="Email"
                     minLength="2"
-                    // value={name}
+                    value={email}
                     onChange={handleChangeEmail}
                     required
                 />
@@ -47,7 +47,7 @@ function Login () {
                     placeholder="Пароль"
                     minLength="6"
                     maxLength="200"
-                    // value={description}
+                    value={password}
                     onChange={handleChangePassword}
                     required
                 />

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link}            from 'react-router-dom';
 
-function Register () {
+function Register ({onRegister}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -18,14 +18,14 @@ function Register () {
         if(!email || !password) {
             return;
         }
-        // TO DO
+        onRegister(email, password);
     }
 
     return (
         <>
             <section className="login">
                 <h2 className="login__title">Регистрация</h2>
-                <form className="login__form">
+                <form className="login__form" onSubmit={handleSubmit}>
                     <input
                         aria-label="Ваша почта"
                         type="Email"
@@ -34,8 +34,7 @@ function Register () {
                         className="login__input"
                         placeholder="Email"
                         minLength="2"
-                        // value={name}
-                        // onChange={handleChangeName}
+                        onChange={handleChangeEmail}
                         required
                     />
                     <span id="email-error" className="login__error"/>
@@ -48,14 +47,13 @@ function Register () {
                         placeholder="Пароль"
                         minLength="6"
                         maxLength="200"
-                        // value={description}
-                        // onChange={handleChangeDescription}
+                        onChange={handleChangePassword}
                         required
                     />
                     <span id="password-error" className="login__error"/>
                     <button type="submit" className="login__button">Зарегистрироваться</button>
                 </form>
-                <p className="login__text">Уже зарегистрированы? <a className="login__link" >Войти</a></p>
+                <p className="login__text">Уже зарегистрированы? <Link className="login__link" to="/sign-in">Войти</Link></p>
             </section>
         </>
     )

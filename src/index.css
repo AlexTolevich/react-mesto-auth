@@ -43,6 +43,7 @@
 @import url('./blocks/popup/__error/_visible/popup__error_visible.css');
 @import url('./blocks/popup/__container/_type/popup__container_type_confirmation.css');
 @import url('./blocks/popup/__container/_type/popup__container_type_avatar.css');
+@import url('./blocks/popup/__container/_type/popup__container_type_tooltip.css');
 @import url('./blocks/footer/footer.css');
 @import url('./blocks/footer/__copyright/footer__copyright.css');
 @import url('./blocks/login/login.css');
