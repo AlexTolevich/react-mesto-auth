@@ -1,5 +1,5 @@
 import React                                  from 'react';
-import {Route, Routes, Navigate, useNavigate} from 'react-router-dom'
+import {Route, Routes, Navigate, useNavigate} from 'react-router-dom';
 import Header                                 from './Header.js';
 import Main                                   from './Main.js';
 import Footer                                 from './Footer.js';
@@ -12,9 +12,9 @@ import EditAvatarPopup                        from './EditAvatarPopup.js';
 import AddPlacePopup                          from './AddPlacePopup.js';
 import Login                                  from './Login.js';
 import Register                               from './Register.js';
-import InfoTooltip    from './InfoTooltip.js';
-import ProtectedRoute from './ProtectedRoute.js';
-import * as auth      from '../utils/auth.js'
+import InfoTooltip                            from './InfoTooltip.js';
+import ProtectedRoute                         from './ProtectedRoute.js';
+import * as auth                              from '../utils/auth.js';
 
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
     React.useEffect(() => {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
-            const jwt = localStorage.getItem('jwt');
             // проверяем токен пользователя
             auth
                 .checkToken(jwt)
@@ -68,9 +67,9 @@ function App() {
             }
         }
 
-        document.addEventListener('keyup', handleEscClose)
+        document.addEventListener('keyup', handleEscClose);
         return () =>
-            document.removeEventListener('keyup', handleEscClose)
+            document.removeEventListener('keyup', handleEscClose);
     }, []);
 
     function onLogin(email, password) {
@@ -111,10 +110,10 @@ function App() {
     }
 
     function onSignOut() {
-        // setLoggedIn(false);
+        setLoggedIn(false);
         setEmail('');
         navigate('/sign-in');
-        localStorage.removeItem('jwt')
+        localStorage.removeItem('jwt');
     }
 
     function handleCardLike(card) {
@@ -199,7 +198,7 @@ function App() {
 
     function closeOverlayClick(event) {
         if (event.target.classList.contains('popup_opened')) {
-            closeAllPopups()
+            closeAllPopups();
         }
     }
 
@@ -214,12 +213,11 @@ function App() {
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="root">
-
                 <Routes>
                     <Route path="/"
                            element={
                                <>
-                                   <Header/>
+                                   <Header email={email} title="Выйти" to="/sign-in" onClick={onSignOut}/>
                                    <ProtectedRoute
                                        component={Main}
                                        loggedIn={loggedIn}
@@ -234,10 +232,10 @@ function App() {
                                </>}
                     />
 
-                    <Route path="/sign-in"
+                    <Route path={loggedIn ? '' : '/sign-in'}
                            element={
                                <>
-                                   <Header/>
+                                   <Header title="Регистрация" to="/sign-up"/>
                                    <Login
                                        onLogin={onLogin}
                                    />
@@ -245,10 +243,10 @@ function App() {
                            }
                     />
 
-                    <Route path="/sign-up"
+                    <Route path={loggedIn ? '' : '/sign-up'}
                            element={
                                <>
-                                   <Header/>
+                                   <Header title="Войти" to="/sign-in"/>
                                    <Register
                                        onRegister={onRegister}
                                    />

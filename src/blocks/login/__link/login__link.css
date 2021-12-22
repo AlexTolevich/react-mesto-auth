@@ -1,6 +1,7 @@
 .login__link{
     text-decoration: none;
     transition: 0.3s;
+    color: white;
     cursor: pointer;
 }
 

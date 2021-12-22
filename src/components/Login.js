@@ -17,7 +17,7 @@ function Login ({onLogin}) {
         if(!email || !password) {
             return;
         }
-        onLogin(email, password)
+        onLogin(email, password);
     }
 
     return (
