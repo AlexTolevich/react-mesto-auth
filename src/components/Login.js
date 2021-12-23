@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Login ({onLogin}) {
+function Login({onLogin}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
@@ -14,14 +14,13 @@ function Login ({onLogin}) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        if(!email || !password) {
+        if (!email || !password) {
             return;
         }
         onLogin(email, password);
     }
 
     return (
-        <>
         <section className="login">
             <h2 className="login__title">Вход</h2>
             <form className="login__form" onSubmit={handleSubmit}>
@@ -55,7 +54,6 @@ function Login ({onLogin}) {
                 <button type="submit" className="login__button">Войти</button>
             </form>
         </section>
-        </>
     )
 }
 

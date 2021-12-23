@@ -44,7 +44,7 @@ function App() {
                     }
                 })
                 .catch((err) => {
-                    console.log(`Ошибка: ${err}`);
+                    console.log(`Ошибка проверки токена: ${err}`);
                     setLoggedIn(false);
                 });
         }
@@ -84,9 +84,10 @@ function App() {
                     navigate('/');
                 }
             })
-            .catch(() => {
+            .catch((err) => {
                 setIsInfoTooltipStatus(false);
                 handleInfoTooltip();
+                console.log(`Ошибка входа: ${err}`);
             });
     }
 
@@ -96,17 +97,18 @@ function App() {
             .then(res => {
                 if (res.data._id) {
                     setIsInfoTooltipStatus(true);
-                    handleInfoTooltip();
+
                     navigate('/sign-in');
                 } else {
                     setIsInfoTooltipStatus(false);
-                    handleInfoTooltip();
                 }
             })
-            .catch(() => {
+            .catch((err) => {
                 setIsInfoTooltipStatus(false);
-                handleInfoTooltip();
-            });
+                console.log(`Ошибка регистрации: ${err}`);
+            })
+            .finally(() => handleInfoTooltip()
+            );
     }
 
     function onSignOut() {
@@ -286,6 +288,9 @@ function App() {
                     onCloseOverlayClick={closeOverlayClick}
                 />
 
+                {/*Пока не работает, как сдам ПР 12 доделать функционал!!!
+                По рекомендации ревью "Для попапа подтверждения можно было
+                создать свой компонент ConfirmationPopup"*/}
                 <PopupWithForm
                     name="confirmation"
                     title="Вы уверены?"

@@ -6,7 +6,7 @@ export const signup = (email, password) => {
         headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
     })
-        .then(res => res.status === 201 ? res.json() : res);
+        .then(_checkResponse);
 };
 
 export const signin = (email, password) => {
@@ -15,7 +15,7 @@ export const signin = (email, password) => {
         headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},
         body: JSON.stringify({email, password})
     })
-        .then(res => res.json())
+        .then(_checkResponse)
         .then(data => {
             localStorage.setItem('jwt', data.jwt);
             localStorage.setItem('email', data.email);
@@ -30,5 +30,13 @@ export const checkToken = token => {
             'Accept': 'application/json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`
         }
     })
-        .then(res => res.status === 200 ? res.json() : res);
+        .then(_checkResponse);
 };
+
+function _checkResponse(res) {
+    if (res.ok) {
+        return res.json()
+    } else {
+        return Promise.reject(res.status)
+    }
+}
