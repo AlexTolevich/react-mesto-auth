@@ -22,11 +22,10 @@ front-end и динамическое обновление данных стра
 
 ## Технологии
 
-- HTML5
-- CSS3 (Flexbox, Grid Layout)
+- React
+- React Router
+- JSX (HTML5 + CSS3)
 - BEM
-- JavaScript (ООП)
-- Webpack
 - Figma
 
 ## Инструкции
